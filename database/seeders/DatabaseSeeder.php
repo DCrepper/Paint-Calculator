@@ -38,8 +38,7 @@ class DatabaseSeeder extends Seeder
                 'type' => 'c',
             ],
         ), 'paints'
-        )->create();
-        dump($paintCategories);
+        )->createQuietly();
 
     }
 }
