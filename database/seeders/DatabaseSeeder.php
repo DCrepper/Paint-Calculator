@@ -26,22 +26,20 @@ class DatabaseSeeder extends Seeder
             'email_verified_at' => now(),
         ]);
 
-        $paintCategories = PaintCategory::factory()->count(3)->create();
-        $paintCategories->each(function ($paintCategory) {
-            TilePaint::factory()->count(3)->sequence(
-                [
-                    'type' => 'a',
-                ],
-                [
-                    'type' => 'b',
-                ],
-                [
-                    'type' => 'c',
-                ],
-            )->create([
-                'paint_category_id' => $paintCategory->id,
-            ]);
-        });
+        $paintCategories = PaintCategory::factory()->count(3)->
+        has(TilePaint::factory()->count(3)->sequence(
+            [
+                'type' => 'a',
+            ],
+            [
+                'type' => 'b',
+            ],
+            [
+                'type' => 'c',
+            ],
+        ), 'paints'
+        )->create();
+        dump($paintCategories);
 
     }
 }

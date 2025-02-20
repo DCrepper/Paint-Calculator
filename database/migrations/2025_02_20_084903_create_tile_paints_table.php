@@ -17,7 +17,7 @@ return new class extends Migration
         Schema::create('tile_paints', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(PaintCategory::class)->constrained();
-            $table->enum('type', ['a', 'b', 'c']);
+            $table->string('type', 10)->nullable(false);
             $table->string('name')->nullable();
             $table->text('description')->nullable();
             $table->timestamps();

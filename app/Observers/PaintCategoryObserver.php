@@ -20,5 +20,6 @@ class PaintCategoryObserver implements ShouldHandleEventsAfterCommit
             ['type' => 'b', 'name' => ''],
             ['type' => 'c', 'name' => ''],
         ]);
+
     }
 }
