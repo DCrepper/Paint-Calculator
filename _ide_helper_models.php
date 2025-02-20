@@ -45,7 +45,9 @@ namespace App\Models{
  * @property \App\Models\TilePaintDescription|null $description
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\TFactory|null $use_factory
  * @property-read \App\Models\PaintCategory $paintCategory
+ * @method static \Database\Factories\TilePaintFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder<static>|TilePaint newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|TilePaint newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|TilePaint query()

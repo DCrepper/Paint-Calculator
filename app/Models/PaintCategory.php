@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 #[ObservedBy([PaintCategoryObserver::class])]
 class PaintCategory extends Model
 {
-    /** @use HasFactory<\Database\Factories\UserFactory> */
+    /** @use HasFactory<\Database\Factories\PaintCategoryFactory> */
     use HasFactory;
 
     protected $fillable = ['id', 'name'];

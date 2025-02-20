@@ -47,9 +47,10 @@ class CsempeCalculatorController extends Controller
 
     // * @param PaintCategory $category
     // * @return \Illuminate\Http\JsonResponse
-    public function paints(PaintCategory $category): JsonResponse
+    public function paints(int $id): JsonResponse
     {
-        $paints = $category->paints()->get();
+        dump(PaintCategory::find($id));
+        $paints = PaintCategory::find($id)->paints()->get();
 
         return response()->json([
             'paints' => $paints,
