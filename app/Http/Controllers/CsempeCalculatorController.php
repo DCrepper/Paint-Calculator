@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers;
 
 use App\Models\PaintCategory;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class CsempeCalculatorController extends Controller
@@ -12,7 +13,7 @@ class CsempeCalculatorController extends Controller
     // * @param Request $request
     // * @var App\Models\TilePaint $paints
     // * @return \Illuminate\Http\JsonResponse
-    public function calculate(Request $request)
+    public function calculate(Request $request): JsonResponse
     {
         $validated = request()->validate([
             'category' => 'required', // PaintCategory->name
@@ -31,6 +32,16 @@ class CsempeCalculatorController extends Controller
         return response()->json([
             'paints' => $paints,
             'paintDescriptions' => $paintDescriptions,
+        ]);
+    }
+
+    // * @return \Illuminate\Http\JsonResponse
+    public function categories(): JsonResponse
+    {
+        $categories = PaintCategory::all();
+
+        return response()->json([
+            'categories' => $categories,
         ]);
     }
 }

@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 #[ObservedBy([PaintCategoryObserver::class])]
 class PaintCategory extends Model
 {
-    protected $fillable = ['name'];
+    protected $fillable = ['id', 'name'];
 
     public function paints(): HasMany
     {

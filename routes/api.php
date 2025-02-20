@@ -11,3 +11,4 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
 });
 
 Route::post('/csempe-kalkulator', [CsempeCalculatorController::class, 'calculate'])->name('csempe-kalkulator.calculate');
+Route::get('/categories', [CsempeCalculatorController::class, 'categories'])->name('csempe-kalkulator.categories');
