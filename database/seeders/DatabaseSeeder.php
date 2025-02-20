@@ -40,5 +40,35 @@ class DatabaseSeeder extends Seeder
         ), 'paints'
         )->createQuietly();
 
+        $paintCategories->each(function (PaintCategory $paintCategory) {
+            $paintCategory->paints->each(function (TilePaint $paint) {
+                $paint->descriptions()->createMany([
+                    [
+                        'description' => '3-7 m2 csempe festésére az alább felsorolt anyagokat szükséges megvásárolni:          
+HARZO Color Csempe és bútorfesték 1 liter x 2 db (igény szerint színezhető)
+HARZO Lakk 1Komp. 1 liter x 1 db (egy rétegben)',
+                        'min' => 1,
+                        'max' => 10,
+                        'price' => 1000,
+                    ],
+                    [
+                        'description' => 'HARZO Color Csempe és bútorfesték 1 liter x 3 db (igény szerint színezhető)
+HARZO Lakk 1Komp. 1 liter x 1 db (egy rétegben)',
+                        'min' => 11,
+                        'max' => 20,
+                        'price' => 2000,
+                    ],
+                    [
+                        'description' => 'HARZO Color Csempe és bútorfesték 1 liter x 4 db (igény szerint színezhető)
+HARZO Lakk 1Komp. 1 liter x 1 db (egy rétegben)
+HARZO Lakk 1Komp. 250 ml x 1 db (egy rétegben)',
+                        'min' => 21,
+                        'max' => 30,
+                        'price' => 3000,
+                    ],
+                ]);
+            });
+        });
+
     }
 }

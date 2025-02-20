@@ -42,9 +42,11 @@ namespace App\Models{
  * @property int $paint_category_id
  * @property string $type
  * @property string|null $name
- * @property \App\Models\TilePaintDescription|null $description
+ * @property string|null $description
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\TilePaintDescription> $descriptions
+ * @property-read int|null $descriptions_count
  * @property-read \App\Models\TFactory|null $use_factory
  * @property-read \App\Models\PaintCategory $paintCategory
  * @method static \Database\Factories\TilePaintFactory factory($count = null, $state = [])
@@ -74,6 +76,7 @@ namespace App\Models{
  * @property int $price
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\TFactory|null $use_factory
  * @property-read \App\Models\TilePaint $tilePaint
  * @method static \Illuminate\Database\Eloquent\Builder<static>|TilePaintDescription newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|TilePaintDescription newQuery()

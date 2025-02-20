@@ -7,7 +7,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class TilePaint extends Model
 {
@@ -23,8 +23,8 @@ class TilePaint extends Model
         return $this->belongsTo(PaintCategory::class);
     }
 
-    public function description(): HasOne
+    public function descriptions(): HasMany
     {
-        return $this->hasOne(TilePaintDescription::class);
+        return $this->hasMany(TilePaintDescription::class);
     }
 }
