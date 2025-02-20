@@ -18,8 +18,10 @@ namespace App\Models{
  * @property int $id
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\TFactory|null $use_factory
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\TilePaint> $paints
  * @property-read int|null $paints_count
+ * @method static \Database\Factories\PaintCategoryFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder<static>|PaintCategory newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|PaintCategory newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|PaintCategory query()
