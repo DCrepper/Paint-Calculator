@@ -13,7 +13,7 @@ class TilePaint extends Model
     // type: a, b, c mandatory
     // name any string ex: 'HARZO Color Easy Pack'
 
-    protected $fillable = ['type', 'name', 'paint_category_id', 'description'];
+    protected $fillable = ['id', 'type', 'name', 'paint_category_id', 'description'];
 
     public function paintCategory(): BelongsTo
     {

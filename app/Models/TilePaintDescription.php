@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class TilePaintDescription extends Model
 {
-    protected $fillable = ['description', 'tile_paint_id', 'min', 'max', 'price'];
+    protected $fillable = ['id', 'description', 'tile_paint_id', 'min', 'max', 'price'];
 
     public function tilePaint(): BelongsTo
     {

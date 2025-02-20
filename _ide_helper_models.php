@@ -16,6 +16,7 @@ namespace App\Models{
  * 
  *
  * @property int $id
+ * @property string $name
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \App\Models\TFactory|null $use_factory
@@ -27,6 +28,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|PaintCategory query()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|PaintCategory whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|PaintCategory whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|PaintCategory whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|PaintCategory whereUpdatedAt($value)
  */
 	class PaintCategory extends \Eloquent {}
@@ -40,14 +42,15 @@ namespace App\Models{
  * @property int $paint_category_id
  * @property string $type
  * @property string|null $name
+ * @property \App\Models\TilePaintDescription|null $description
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \App\Models\TilePaintDescription|null $description
  * @property-read \App\Models\PaintCategory $paintCategory
  * @method static \Illuminate\Database\Eloquent\Builder<static>|TilePaint newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|TilePaint newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|TilePaint query()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|TilePaint whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|TilePaint whereDescription($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|TilePaint whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|TilePaint whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|TilePaint wherePaintCategoryId($value)
@@ -64,6 +67,9 @@ namespace App\Models{
  * @property int $id
  * @property int $tile_paint_id
  * @property string $description
+ * @property int $min
+ * @property int $max
+ * @property int $price
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \App\Models\TilePaint $tilePaint
@@ -73,6 +79,9 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|TilePaintDescription whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|TilePaintDescription whereDescription($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|TilePaintDescription whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|TilePaintDescription whereMax($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|TilePaintDescription whereMin($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|TilePaintDescription wherePrice($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|TilePaintDescription whereTilePaintId($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|TilePaintDescription whereUpdatedAt($value)
  */
