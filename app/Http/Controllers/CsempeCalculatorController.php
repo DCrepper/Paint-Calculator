@@ -44,4 +44,15 @@ class CsempeCalculatorController extends Controller
             'categories' => $categories,
         ]);
     }
+
+    // * @param PaintCategory $category
+    // * @return \Illuminate\Http\JsonResponse
+    public function paints(PaintCategory $category): JsonResponse
+    {
+        $paints = $category->paints;
+
+        return response()->json([
+            'paints' => $paints,
+        ]);
+    }
 }
