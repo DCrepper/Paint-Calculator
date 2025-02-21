@@ -1,0 +1,14 @@
+{
+    "All rights reserved.": "Minden jog fenntartva.",
+    "Next": "Következő",
+    "Page %current% of %total%": "Oldal %current% / %total%",
+    "Previous": "Előző",
+    "This is a required field.": "Ez egy kötelező mező.",
+    "This value is not a valid email address.": "Ez az érték nem egy érvényes e-mail cím.",
+    "This value is not a valid URL.": "Ez az érték nem egy érvényes URL.",
+    "The value is not a valid date.": "Az érték nem egy érvényes dátum.",
+    "The value must be a number.": "Az értéknek számnak kell lennie.",
+    "The value must be a valid number.": "Az értéknek érvényes számnak kell lennie.",
+    "The value must be greater than %s.": "Az értéknek nagyobbnak kell lennie, mint %s."
+
+}

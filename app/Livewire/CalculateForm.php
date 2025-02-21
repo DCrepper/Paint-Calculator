@@ -10,6 +10,7 @@ use App\Models\PaintCategory;
 use App\Models\Region;
 use App\Models\TilePaintDescription;
 use Barryvdh\DomPDF\Facade\Pdf as PDF;
+use Filament\Forms\Components\Radio;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Concerns\InteractsWithForms;
@@ -52,10 +53,11 @@ class CalculateForm extends Component implements HasForms
                     ->visible(fn (Get $get) => $get('full_name') && $get('email'))
                     ->label('Festés kategóriája')
                     ->live(),
-                Select::make('selectedPaint')
+                Radio::make('selectedPaint')
                     ->options(fn (Get $get) => $get('selectedPaintCategory') ? PaintCategory::find($get('selectedPaintCategory'))->paints->pluck('name', 'id') : [])
+                    ->descriptions(fn (Get $get) => $get('selectedPaintCategory') ? PaintCategory::find($get('selectedPaintCategory'))->paints->pluck('description', 'id') : [])
                     ->visible(fn (Get $get) => $get('selectedPaintCategory'))
-                    ->label('Csempefestésre')
+                    ->label('Csomag választás')
                     ->live(),
                 TextInput::make('area')
                     ->numeric()

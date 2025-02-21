@@ -1,12 +1,17 @@
 <x-mail::message>
-# Introduction
 
-The body of your message.
+    <x-slot name="header">
+        <x-mail::header :url="config('app.url')">
+            Harzó Kft.
+        </x-mail::header>
+    </x-slot>
 
-<x-mail::button :url="''">
-Button Text
-</x-mail::button>
+    The body of your message.
 
-Thanks,<br>
-{{ config('app.name') }}
+    <x-mail::button :url="''">
+        Button Text
+    </x-mail::button>
+
+    Thanks,<br>
+    {{ config('app.name') }}
 </x-mail::message>
