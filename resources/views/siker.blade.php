@@ -9,7 +9,7 @@
 
                     <a href="https://harzo.hu" class="btn btn-primary">Vissza a főoldalra</a>
 
-                    <a href="{{ route('csempe-kalkulator.calculate') }}" class="btn btn-primary">
+                    <a href="{{ route('index') }}" class="btn btn-primary">
                         Új árajánlat készítése
                     </a>
                 </div>
