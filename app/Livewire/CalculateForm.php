@@ -7,6 +7,7 @@ namespace App\Livewire;
 use App\Mail\CalculationFormSendToAdmin;
 use App\Mail\CalculationFormSendToUser;
 use App\Models\PaintCategory;
+use App\Models\Region;
 use App\Models\TilePaintDescription;
 use Barryvdh\DomPDF\Facade\Pdf as PDF;
 use Filament\Forms\Components\Select;
@@ -38,23 +39,28 @@ class CalculateForm extends Component implements HasForms
             ->schema([
                 TextInput::make('full_name')
                     ->required()
+                    ->label('Teljes név')
                     ->live(),
                 TextInput::make('email')
                     ->email()
                     ->required()
                     ->visible(fn (Get $get) => $get('full_name'))
+                    ->label('Email')
                     ->live(),
                 Select::make('selectedPaintCategory')
                     ->options(PaintCategory::all()->pluck('name', 'id'))
                     ->visible(fn (Get $get) => $get('full_name') && $get('email'))
+                    ->label('Festés kategóriája')
                     ->live(),
                 Select::make('selectedPaint')
                     ->options(fn (Get $get) => $get('selectedPaintCategory') ? PaintCategory::find($get('selectedPaintCategory'))->paints->pluck('name', 'id') : [])
                     ->visible(fn (Get $get) => $get('selectedPaintCategory'))
+                    ->label('Csempefestésre')
                     ->live(),
                 TextInput::make('area')
                     ->numeric()
                     ->required()
+                    ->label('Festés felületének mérete (m2)')
                     ->visible(fn (Get $get) => $get('selectedPaint'))
                     ->live()
                     ->afterStateUpdated(function (Get $get, ?string $state) {
@@ -67,7 +73,14 @@ class CalculateForm extends Component implements HasForms
                         $this->selectedPaintDescription = TilePaintDescription::where('tile_paint_id', $get('selectedPaint'))
                             ->where('min', '<=', $state)->where('max', '>=', $state)->first();
                     }),
-
+                Select::make('region')->visible(fn (Get $get) => $get('area'))
+                    ->label('Régió')
+                    ->options(Region::all()->pluck('name', 'id'))
+                    ->live(),
+                Select::make('Store')->visible(fn (Get $get) => $get('region'))
+                    ->options(fn (Get $get) => $get('region') ? Region::find($get('region'))->stores()->get()->pluck('name', 'id') : [])
+                    ->label('Üzlet')
+                    ->live(),
             ])
             ->statePath('data');
     }

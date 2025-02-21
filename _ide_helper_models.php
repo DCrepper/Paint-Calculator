@@ -39,6 +39,59 @@ namespace App\Models{
  * 
  *
  * @property int $id
+ * @property string $name
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\TFactory|null $use_factory
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Store> $stores
+ * @property-read int|null $stores_count
+ * @method static \Database\Factories\RegionFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Region newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Region newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Region query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Region whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Region whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Region whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Region whereUpdatedAt($value)
+ */
+	class Region extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $id
+ * @property int $region_id
+ * @property string $name
+ * @property string|null $address
+ * @property string|null $phone
+ * @property string $email
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\TFactory|null $use_factory
+ * @property-read \App\Models\Region $region
+ * @method static \Database\Factories\StoreFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Store newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Store newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Store query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Store whereAddress($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Store whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Store whereEmail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Store whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Store whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Store wherePhone($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Store whereRegionId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Store whereUpdatedAt($value)
+ */
+	class Store extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $id
  * @property int $paint_category_id
  * @property string $type
  * @property string|null $name

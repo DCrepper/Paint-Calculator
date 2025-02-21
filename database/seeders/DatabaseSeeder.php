@@ -5,8 +5,10 @@ declare(strict_types=1);
 namespace Database\Seeders;
 
 use App\Models\PaintCategory;
-use App\Models\TilePaint;
+use App\Models\Region;
+use App\Models\Store;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\TilePaint;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -26,19 +28,32 @@ class DatabaseSeeder extends Seeder
             'email_verified_at' => now(),
         ]);
 
-        $paintCategories = PaintCategory::factory()->count(3)->
-        has(TilePaint::factory()->count(3)->sequence(
+        $paintCategories = PaintCategory::factory()->count(3)->sequence(
             [
-                'type' => 'a',
+                'name' => 'Csempefestés',
             ],
             [
-                'type' => 'b',
+                'name' => 'Csempe megszüntetése bontás nélkül',
             ],
             [
-                'type' => 'c',
+                'name' => 'Faldíszítés',
             ],
-        ), 'paints'
-        )->createQuietly();
+        )
+            ->has(TilePaint::factory()->count(3)->sequence(
+                [
+                    'name' => 'HARZO Color Easy Pack',
+                    'type' => 'a',
+                ],
+                [
+                    'name' => 'HARZO Color Easy plus',
+                    'type' => 'b',
+                ],
+                [
+                    'name' => 'HARZO Color Professional',
+                    'type' => 'c',
+                ],
+            ), 'paints'
+            )->createQuietly();
 
         $paintCategories->each(function (PaintCategory $paintCategory) {
             $paintCategory->paints->each(function (TilePaint $paint) {
@@ -69,6 +84,13 @@ HARZO Lakk 1Komp. 250 ml x 1 db (egy rétegben)',
                 ]);
             });
         });
+
+        Region::factory()->count(2)->sequence(
+            ['name' => 'Budapest'],
+            ['name' => 'Debrecen'],
+        )->has(
+            Store::factory()->count(2)
+        )->create();
 
     }
 }

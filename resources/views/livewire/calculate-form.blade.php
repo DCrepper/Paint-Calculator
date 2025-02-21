@@ -1,17 +1,20 @@
-<div class="grid grid-cols-1 gap-6 sm:grid-cols-2 p-6 bg-white rounded-lg shadow-md">
+<div class="grid grid-cols-1 gap-6 p-6 bg-white rounded-lg shadow-md sm:grid-cols-2">
     <div class="flex justify-center">
         <form wire:submit="submit" class="space-y-4">
             {{ $this->form }}
 
-            <button type="submit" class="px-4 py-2 bg-blue-500 text-black rounded hover:bg-blue-600">
-                Submit
+            <button type="submit" class="px-4 py-2 text-black bg-blue-500 rounded hover:bg-blue-600">
+                {{ __('filament-actions::modal.actions.submit.label') }}
             </button>
         </form>
     </div>
 
     @isset($selectedPaintDescription)
         <div class="p-4 bg-gray-100 rounded-lg">
-            <h2 class="text-lg font-semibold">Selected paint description</h2>
+            <h2 class="text-lg font-semibold">
+                {{ $selectedPaintDescription?->min }} - {{ $selectedPaintDescription?->max }} csempe festésére az alább
+                felsorolt anyagokat szükséges megvásárolni
+            </h2>
             <p>{{ $selectedPaintDescription?->description }}</p>
             <p><strong>Várható végösszeg:</strong> bruttó {{ $selectedPaintDescription?->price }}Ft + színezés</p>
             <p>
