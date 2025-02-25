@@ -61,15 +61,16 @@
     <body>
         <div class="container">
             <div class="header">
-                <img src="{{ asset('images/harzo-logo.png') }}" alt="Harzo Logo">
-                <h1>Számítási Részletek</h1>
+                <img src="https://harzo.hu/wp-content/uploads/2022/10/HARZO_uj_logo-1024x835.png" alt="Harzó Kft. logo"
+                    style="width: 100px; height: 100px;">
+                <h1>Árajánlat Részletek</h1>
             </div>
             <div class="details">
                 <h2>Ügyfél Információk</h2>
                 <p><strong>Teljes Név:</strong> {{ $data['full_name'] }}</p>
                 <p><strong>Email:</strong> {{ $data['email'] }}</p>
-                <p><strong>Kiválasztott Festékkategória:</strong> {{ $data['selectedPaintCategory']['name'] }}</p>
-                <p><strong>Kiválasztott Festék:</strong> {{ $data['selectedPaint']['description'] }}</p>
+                <p><strong>Kiválasztott Festékkategória:</strong> {{ $data['selectedPaintCategory']->name }}</p>
+                <p><strong>Kiválasztott Festék:</strong> {{ $data['selectedPaint']->description }}</p>
                 <p><strong>Terület:</strong> {{ $data['area'] }} m²</p>
                 <p><strong>Régió:</strong> {{ $data['region'] }}</p>
                 <p><strong>Üzlet:</strong> {{ $data['Store'] }}</p>

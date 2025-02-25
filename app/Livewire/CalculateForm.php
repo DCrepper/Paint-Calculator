@@ -95,6 +95,8 @@ class CalculateForm extends Component implements HasForms
         $pdf = PDF::loadView('pdf.calculation', ['data' => $data]);
         $pdfPath = storage_path('app/public/calculation.pdf');
         $pdf->save($pdfPath);
+        $selectedPaintDescription = TilePaintDescription::find($data['selectedPaint']);
+        $selectedPaintCategory = PaintCategory::find($data['selectedPaintCategory']);
 
         // Email the data to admin, 2 others and form email to the user
         Mail::to($data['email'])->send(new CalculationFormSendToUser($data, $pdfPath));
