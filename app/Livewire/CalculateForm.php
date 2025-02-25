@@ -79,7 +79,7 @@ class CalculateForm extends Component implements HasForms
                     ->label('Régió')
                     ->options(Region::all()->pluck('name', 'id'))
                     ->live(),
-                Select::make('Store')->visible(fn (Get $get) => $get('region'))
+                Select::make('store')->visible(fn (Get $get) => $get('region'))
                     ->options(fn (Get $get) => $get('region') ? Region::find($get('region'))->stores()->get()->pluck('name', 'id') : [])
                     ->label('Üzlet')
                     ->live(),
@@ -90,13 +90,14 @@ class CalculateForm extends Component implements HasForms
     public function submit(): void
     {
         $data = $this->form->getState();
-
+        $data['selectedPaintDescription'] = TilePaintDescription::find($data['selectedPaint']);
+        $data['selectedPaintCategory'] = PaintCategory::find($data['selectedPaintCategory']);
+        $data['region'] = Region::find($data['region']);
+        $data['store'] = $data['region']->stores()->find($data['store']);
         // Generate PDF
         $pdf = PDF::loadView('pdf.calculation', ['data' => $data]);
         $pdfPath = storage_path('app/public/calculation.pdf');
         $pdf->save($pdfPath);
-        $selectedPaintDescription = TilePaintDescription::find($data['selectedPaint']);
-        $selectedPaintCategory = PaintCategory::find($data['selectedPaintCategory']);
 
         // Email the data to admin, 2 others and form email to the user
         Mail::to($data['email'])->send(new CalculationFormSendToUser($data, $pdfPath));

@@ -73,7 +73,7 @@
                 <p><strong>Kiválasztott Festék:</strong> {{ $data['selectedPaint']->description }}</p>
                 <p><strong>Terület:</strong> {{ $data['area'] }} m²</p>
                 <p><strong>Régió:</strong> {{ $data['region'] }}</p>
-                <p><strong>Üzlet:</strong> {{ $data['Store'] }}</p>
+                <p><strong>Üzlet:</strong> {{ $data['store'] }}</p>
             </div>
             <div class="footer">
                 <p>&copy; {{ date('Y') }} Harzo. Minden jog fenntartva.</p>
