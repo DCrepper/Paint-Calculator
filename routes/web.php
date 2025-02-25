@@ -42,3 +42,29 @@ Route::get('/mailable', function () {
         pdfPath: 'path/to/pdf'
     );
 });
+
+Route::get('/pdf', function () {
+    $data = [
+        'full_name' => 'John Doe',
+        'area' => 10,
+        'email' => 'admin@admin.com',
+        'phone' => '123456789',
+        'selectedPaintCategory' => 1,
+        'selectedPaint' => 1,
+        'region' => 1,
+        'store' => 1,
+
+    ];
+    $data['selectedPaintDescription'] = TilePaintDescription::find($data['selectedPaint']);
+    $data['selectedPaintCategory'] = PaintCategory::find($data['selectedPaintCategory']);
+    $data['TilePaint'] = TilePaint::find($data['selectedPaint']);
+    $data['region'] = Region::find($data['region']);
+    $data['store'] = $data['region']->stores()->find($data['store']);
+
+    return view('pdf.calculation', ['data' => $data]);
+
+    /* return new CalculationFormSendToAdmin(
+        data: $data,
+        pdfPath: 'path/to/pdf'
+    ); */
+});

@@ -21,7 +21,7 @@
     {{-- Footer --}}
     <x-slot:footer>
         <x-mail::footer>
-            © {{ date('Y') }} {{ config('app.url') }}. {{ __('All rights reserved.') }}
+            © {{ date('Y') }} Harzo Kft. {{ __('All rights reserved.') }}
         </x-mail::footer>
     </x-slot:footer>
 </x-mail::layout>
