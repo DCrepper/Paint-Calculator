@@ -8,6 +8,7 @@ use App\Mail\CalculationFormSendToAdmin;
 use App\Mail\CalculationFormSendToUser;
 use App\Models\PaintCategory;
 use App\Models\Region;
+use App\Models\TilePaint;
 use App\Models\TilePaintDescription;
 use Barryvdh\DomPDF\Facade\Pdf as PDF;
 use Filament\Forms\Components\Radio;
@@ -54,8 +55,8 @@ class CalculateForm extends Component implements HasForms
                     ->label('Festés kategóriája')
                     ->live(),
                 Radio::make('selectedPaint')
-                    ->options(fn (Get $get) => $get('selectedPaintCategory') ? PaintCategory::find($get('selectedPaintCategory'))->paints->pluck('name', 'id') : [])
-                    ->descriptions(fn (Get $get) => $get('selectedPaintCategory') ? PaintCategory::find($get('selectedPaintCategory'))->paints->pluck('description', 'id') : [])
+                    ->options(fn (Get $get) => $get('selectedPaintCategory') ? PaintCategory::find($get('selectedPaintCategory'))->paints()->get()->pluck('name', 'id') : [])
+                    ->descriptions(fn (Get $get) => $get('selectedPaintCategory') ? PaintCategory::find($get('selectedPaintCategory'))->paints()->get()->pluck('description', 'id') : [])
                     ->visible(fn (Get $get) => $get('selectedPaintCategory'))
                     ->label('Csomag választás')
                     ->live(),
@@ -92,6 +93,7 @@ class CalculateForm extends Component implements HasForms
         $data = $this->form->getState();
         $data['selectedPaintDescription'] = TilePaintDescription::find($data['selectedPaint']);
         $data['selectedPaintCategory'] = PaintCategory::find($data['selectedPaintCategory']);
+        $data['TilePaint'] = TilePaint::find($data['selectedPaint']);
         $data['region'] = Region::find($data['region']);
         $data['store'] = $data['region']->stores()->find($data['store']);
         // Generate PDF

@@ -70,10 +70,10 @@
                 <p><strong>Teljes Név:</strong> {{ $data['full_name'] }}</p>
                 <p><strong>Email:</strong> {{ $data['email'] }}</p>
                 <p><strong>Kiválasztott Festékkategória:</strong> {{ $data['selectedPaintCategory']->name }}</p>
-                <p><strong>Kiválasztott Festék:</strong> {{ $data['selectedPaint']->description }}</p>
-                <p><strong>Terület:</strong> {{ $data['area'] }} m²</p>
-                <p><strong>Régió:</strong> {{ $data['region'] }}</p>
-                <p><strong>Üzlet:</strong> {{ $data['store'] }}</p>
+                <p><strong>Kiválasztott Festék:</strong> {{ $data['TilePaint']->name }}</p>
+                <p><strong>Megadot terület:</strong> {{ $data['area'] }} m²</p>
+                <p><strong>Régió:</strong> {{ $data['region']->name }}</p>
+                <p><strong>Üzlet:</strong> {{ $data['store']->name }} {{ $data['store']->address }}</p>
             </div>
             <div class="footer">
                 <p>&copy; {{ date('Y') }} Harzo. Minden jog fenntartva.</p>
