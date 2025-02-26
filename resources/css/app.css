@@ -6,7 +6,7 @@
 
 form {
     .fi-input {
-        @apply bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-rose-600 focus:border-rose-600 block w-full p-2.5 !important;
+        @apply bg-gray-300 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-8 focus:ring-rose-600 focus:border-rose-600 block w-full p-2.5 !important;
     }
 
     .fi-select-input {
