@@ -39,7 +39,7 @@ class CalculateForm extends Component implements HasForms
     {
         return $form
             ->schema([
-                TextInput::make('full_name')->extraInputAttributes(['class' => '[&:not(:has(.fi-ac-action:focus))]:focus-within:ring-rose-600'])
+                TextInput::make('full_name')
                     ->required()
                     ->label('Teljes név')
                     ->live(),
