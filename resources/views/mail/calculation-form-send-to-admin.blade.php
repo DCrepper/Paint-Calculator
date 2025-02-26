@@ -5,7 +5,7 @@
         </x-mail::header>
     </x-slot>
     <div class="p-6 bg-gray-100 rounded-lg">
-        <h1 class="mb-4 text-2xl font-bold">Új Fesék Kérelem</h1>
+        <h1 class="mb-4 text-2xl font-bold">Új Számítási Kérelem</h1>
         <p class="mb-2"><strong>Teljes Név:</strong> {{ $data['full_name'] }}</p>
         <p class="mb-2"><strong>Email:</strong> {{ $data['email'] }}</p>
         <p class="mb-2"><strong>Kiválasztott Festékkategória:</strong> {{ $data['selectedPaintCategory']->name }}</p>
@@ -19,6 +19,7 @@
     </x-mail::button>
     Köszönjük,<br>
     Harzó Kft.
+
     <x-slot name="footer">
         <x-mail::footer>
             &copy; {{ date('Y') }} Harzó Kft. Minden jog fenntartva.

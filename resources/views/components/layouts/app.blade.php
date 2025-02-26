@@ -22,7 +22,7 @@
 
     <body class="antialiased">
         @isset($title)
-            <header class="bg-white shadow">
+            <header class="bg-white">
                 <div class="px-4 py-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
                     <h1 class="text-3xl font-bold text-gray-900">
                         {{ $title }}
