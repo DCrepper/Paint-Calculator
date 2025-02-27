@@ -9,6 +9,10 @@
     "src": "resources/css/theme.css",
     "isEntry": true
   },
+  "resources/images/HARZO-logo.webp": {
+    "file": "assets/HARZO-logo-BIfB6XjN.webp",
+    "src": "resources/images/HARZO-logo.webp"
+  },
   "resources/js/app.js": {
     "file": "assets/app-l0sNRNKZ.js",
     "name": "app",
