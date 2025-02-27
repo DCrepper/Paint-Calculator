@@ -31,6 +31,8 @@ class TilePaintResource extends Resource
                 Forms\Components\TextInput::make('name'),
                 Forms\Components\Textarea::make('description')
                     ->columnSpanFull(),
+                Forms\Components\Textarea::make('paint_order')
+                    ->columnSpanFull(),
             ]);
     }
 

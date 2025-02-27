@@ -19,7 +19,6 @@ namespace App\Models{
  * @property string $name
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \App\Models\TFactory|null $use_factory
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\TilePaint> $paints
  * @property-read int|null $paints_count
  * @method static \Database\Factories\PaintCategoryFactory factory($count = null, $state = [])
@@ -42,7 +41,6 @@ namespace App\Models{
  * @property string $name
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \App\Models\TFactory|null $use_factory
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Store> $stores
  * @property-read int|null $stores_count
  * @method static \Database\Factories\RegionFactory factory($count = null, $state = [])
@@ -69,7 +67,6 @@ namespace App\Models{
  * @property string $email
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \App\Models\TFactory|null $use_factory
  * @property-read \App\Models\Region $region
  * @method static \Database\Factories\StoreFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Store newModelQuery()
@@ -100,7 +97,6 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\TilePaintDescription> $descriptions
  * @property-read int|null $descriptions_count
- * @property-read \App\Models\TFactory|null $use_factory
  * @property-read \App\Models\PaintCategory $paintCategory
  * @method static \Database\Factories\TilePaintFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder<static>|TilePaint newModelQuery()
@@ -129,7 +125,6 @@ namespace App\Models{
  * @property int $price
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \App\Models\TFactory|null $use_factory
  * @property-read \App\Models\TilePaint $tilePaint
  * @method static \Illuminate\Database\Eloquent\Builder<static>|TilePaintDescription newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|TilePaintDescription newQuery()
@@ -158,7 +153,6 @@ namespace App\Models{
  * @property string|null $remember_token
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \App\Models\TFactory|null $use_factory
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection<int, \Illuminate\Notifications\DatabaseNotification> $notifications
  * @property-read int|null $notifications_count
  * @method static \Database\Factories\UserFactory factory($count = null, $state = [])

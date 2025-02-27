@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('type', 10)->nullable(false);
             $table->string('name')->nullable();
             $table->text('description')->nullable();
+            $table->longText('paint_order')->nullable();
             $table->timestamps();
         });
     }

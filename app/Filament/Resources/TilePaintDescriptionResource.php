@@ -29,6 +29,16 @@ class TilePaintDescriptionResource extends Resource
                 Forms\Components\Textarea::make('description')
                     ->required()
                     ->columnSpanFull(),
+                Forms\Components\TextInput::make('min')
+                    ->required()
+                    ->numeric(),
+                Forms\Components\TextInput::make('max')
+                    ->required()
+                    ->numeric(),
+                Forms\Components\TextInput::make('price')
+                    ->required()
+                    ->numeric()
+                    ->prefix('$'),
             ]);
     }
 
@@ -38,6 +48,15 @@ class TilePaintDescriptionResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('tilePaint.name')
                     ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('min')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('max')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('price')
+                    ->money()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()

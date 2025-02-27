@@ -23,9 +23,9 @@ class StoreResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('region_id')
-                    ->required()
-                    ->numeric(),
+                Forms\Components\Select::make('region_id')
+                    ->relationship('region', 'name')
+                    ->required(),
                 Forms\Components\TextInput::make('name')
                     ->required(),
                 Forms\Components\TextInput::make('address'),
@@ -41,7 +41,7 @@ class StoreResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('region_id')
+                Tables\Columns\TextColumn::make('region.name')
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('name')

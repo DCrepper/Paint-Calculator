@@ -24,6 +24,7 @@ class TilePaintFactory extends Factory
             'name' => $this->faker->word,
             'paint_category_id' => PaintCategory::factory(),
             'description' => $this->faker->sentence,
+            'paint_order' => $this->faker->paragraph,
         ];
     }
 }
