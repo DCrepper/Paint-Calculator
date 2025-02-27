@@ -24,11 +24,13 @@ class TilePaintResource extends Resource
         return $form
             ->schema([
                 Forms\Components\Select::make('paint_category_id')
-                    ->relationship('paintCategory', 'id')
+                    ->relationship('paintCategory', 'name')
                     ->required(),
                 Forms\Components\TextInput::make('type')
                     ->required(),
                 Forms\Components\TextInput::make('name'),
+                Forms\Components\Textarea::make('description')
+                    ->columnSpanFull(),
             ]);
     }
 
@@ -36,7 +38,7 @@ class TilePaintResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('paintCategory.id')
+                Tables\Columns\TextColumn::make('paintCategory.name')
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('type')
