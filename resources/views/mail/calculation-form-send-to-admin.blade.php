@@ -19,7 +19,6 @@
     </x-mail::button>
     Köszönjük,<br>
     Harzó Kft.
-
     <x-slot name="footer">
         <x-mail::footer>
             &copy; {{ date('Y') }} Harzó Kft. Minden jog fenntartva.
