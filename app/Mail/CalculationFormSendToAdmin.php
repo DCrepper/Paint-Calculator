@@ -34,7 +34,7 @@ class CalculationFormSendToAdmin extends Mailable
     public function content(): Content
     {
         return new Content(
-            markdown: 'mail.calculation-form-send-to-admin',
+            markdown: 'mail.calculation-form-send-to-admin', with: ['data' => $this->data],
         );
     }
 
