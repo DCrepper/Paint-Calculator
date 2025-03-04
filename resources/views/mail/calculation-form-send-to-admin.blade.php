@@ -14,9 +14,6 @@
         <p class="mb-2"><strong>Megye:</strong> {{ $data['region']->name }}</p>
         <p class="mb-2"><strong>Üzlet:</strong> {{ $data['store']->name }} {{ $data['store']->address }}</p>
     </div>
-    <x-mail::button :url="config('app.url') . '/admin/calculations'">
-        További részletek
-    </x-mail::button>
     Köszönjük,<br>
     Harzó Kft.
     <x-slot name="footer">
