@@ -55,6 +55,10 @@
                 font-size: 12px;
                 color: #999;
             }
+
+            .page-break {
+                page-break-after: always;
+            }
         </style>
         @vite('resources/css/app.css')
     </head>
@@ -88,7 +92,7 @@
                         {{ $data['selectedPaintDescription']?->price }}Ft +
                         színezés
                     </p>
-                    <br><br><br><br><br><br><br><br><br><br><br>
+                    <div class="page-break"></div>
                     <h2 class="mt-4 mb-2 text-lg font-semibold"><strong>Rétegrend:</strong></h2>
                     @isset($data['tilePaint'])
                         {{ $data['tilePaint']?->paint_order }}
