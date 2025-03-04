@@ -88,6 +88,7 @@
                         {{ $data['selectedPaintDescription']?->price }}Ft +
                         színezés
                     </p>
+                    <br><br><br><br><br><br><br><br><br><br><br>
                     <h2 class="mt-4 mb-2 text-lg font-semibold"><strong>Rétegrend:</strong></h2>
                     @isset($data['tilePaint'])
                         {{ $data['tilePaint']?->paint_order }}
