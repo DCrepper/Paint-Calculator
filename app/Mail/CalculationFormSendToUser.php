@@ -31,7 +31,7 @@ class CalculationFormSendToUser extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Calculation Form Send To User',
+            subject: 'Festék kalkulácíó Form',
         );
     }
 

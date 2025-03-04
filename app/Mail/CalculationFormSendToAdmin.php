@@ -27,7 +27,7 @@ class CalculationFormSendToAdmin extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Calculation Form Send To Admin',
+            subject: 'Festék kalkulácíó Form',
         );
     }
 
