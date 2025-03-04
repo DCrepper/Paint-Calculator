@@ -9,7 +9,7 @@
         <p class="mb-2"><strong>Teljes Név:</strong> {{ $data['full_name'] }}</p>
         <p class="mb-2"><strong>Email:</strong> {{ $data['email'] }}</p>
         <p class="mb-2"><strong>Kiválasztott Festékkategória:</strong> {{ $data['selectedPaintCategory']->name }}</p>
-        <p class="mb-2"><strong>Kiválasztott Festék:</strong> {{ $data['TilePaint']->name }}</p>
+        <p class="mb-2"><strong>Kiválasztott Festék:</strong> {{ $data['tilePaint']->name }}</p>
         <p class="mb-2"><strong>Megadott felület területe:</strong> {{ $data['area'] }} m²</p>
         <p class="mb-2"><strong>Megye:</strong> {{ $data['region']->name }}</p>
         <p class="mb-2"><strong>Üzlet:</strong> {{ $data['store']->name }} {{ $data['store']->address }}</p>

@@ -33,7 +33,7 @@ Route::get('/mailable', function () {
     ];
     $data['selectedPaintDescription'] = TilePaintDescription::find($data['selectedPaint']);
     $data['selectedPaintCategory'] = PaintCategory::find($data['selectedPaintCategory']);
-    $data['TilePaint'] = TilePaint::find($data['selectedPaint']);
+    $data['tilePaint'] = TilePaint::find($data['selectedPaint']);
     $data['region'] = Region::find($data['region']);
     $data['store'] = $data['region']->stores()->find($data['store']);
 
@@ -57,7 +57,7 @@ Route::get('/pdf', function () {
     ];
     $data['selectedPaintDescription'] = TilePaintDescription::find($data['selectedPaint']);
     $data['selectedPaintCategory'] = PaintCategory::find($data['selectedPaintCategory']);
-    $data['TilePaint'] = TilePaint::find($data['selectedPaint']);
+    $data['tilePaint'] = TilePaint::find($data['selectedPaint']);
     $data['region'] = Region::find($data['region']);
     $data['store'] = $data['region']->stores()->find($data['store']);
 

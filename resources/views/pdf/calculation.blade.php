@@ -56,6 +56,7 @@
                 color: #999;
             }
         </style>
+        @vite('resources/css/app.css')
     </head>
 
     <body>
@@ -70,13 +71,41 @@
                 <p><strong>Teljes Név:</strong> {{ $data['full_name'] }}</p>
                 <p><strong>Email:</strong> {{ $data['email'] }}</p>
                 <p><strong>Kiválasztott Festékkategória:</strong> {{ $data['selectedPaintCategory']->name }}</p>
-                <p><strong>Kiválasztott Festék:</strong> {{ $data['TilePaint']->name }}</p>
+                <p><strong>Kiválasztott Festék:</strong> {{ $data['tilePaint']->name }}</p>
                 <p><strong>Megadot terület:</strong> {{ $data['area'] }} m²</p>
                 <p><strong>Régió:</strong> {{ $data['region']->name }}</p>
                 <p><strong>Üzlet:</strong> {{ $data['store']->name }} {{ $data['store']->address }}</p>
             </div>
-            <div class="footer">
-                <p>&copy; {{ date('Y') }} Harzo. Minden jog fenntartva.</p>
+            <div class="">
+                <div class="p-8 bg-gray-100 rounded-lg description">
+                    <h2 class="mb-4 font-semibold">
+                        {{ $data['selectedPaintDescription']?->min }} m2 -
+                        {{ $data['selectedPaintDescription']?->max }} m2
+                        csempe festésére az alább felsorolt anyagokat szükséges megvásárolni
+                    </h2>
+                    <p class="mb-2 details">{{ $data['selectedPaintDescription']?->description }}</p>
+                    <p class="mb-2 details"><strong>Várható végösszeg:</strong> bruttó
+                        {{ $data['selectedPaintDescription']?->price }}Ft +
+                        színezés
+                    </p>
+                    <h2 class="mt-4 mb-2 text-lg font-semibold"><strong>Rétegrend:</strong></h2>
+                    @isset($data['tilePaint'])
+                        {{ $data['tilePaint']?->paint_order }}
+                    @endisset
+
+                </div>
+                <div class="thank-you p-8 bg-gray-100 rounded-lg mt-8 text-center">
+                    <h2 class="text-xl font-semibold mb-4">Köszönjük az árajánlat kérését!</h2>
+                    <p class="mb-2">Hamarosan felvesszük Önnel a kapcsolatot a részletek egyeztetése érdekében.</p>
+                    <p class="mb-2">Amennyiben bármilyen kérdése van, kérjük, lépjen kapcsolatba velünk az alábbi
+                        elérhetőségek egyikén:</p>
+                    <ul class="list-none list-inside mb-4" style="list-style-type: none;">
+                        <li class="mb-2" style="padding: 2px;margin: 5px;">Email: info@harzo.hu</li>
+                        <li class="mb-2" style="padding: 2px;margin: 5px;">Telefon: +36 1 234 5678</li>
+                    </ul>
+                    <p>Köszönjük, hogy minket választott!</p>
+                </div>
+                <p class="footer">&copy; {{ date('Y') }} Harzo. Minden jog fenntartva.</p>
             </div>
         </div>
     </body>

@@ -1,17 +1,16 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\TilePaintDescriptionResource\Pages;
-use App\Filament\Resources\TilePaintDescriptionResource\RelationManagers;
 use App\Models\TilePaintDescription;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class TilePaintDescriptionResource extends Resource
 {
@@ -38,7 +37,7 @@ class TilePaintDescriptionResource extends Resource
                 Forms\Components\TextInput::make('price')
                     ->required()
                     ->numeric()
-                    ->prefix('$'),
+                    ->postfix('Ft.'),
             ]);
     }
 
@@ -56,7 +55,7 @@ class TilePaintDescriptionResource extends Resource
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('price')
-                    ->money()
+                    ->money('HUF')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()

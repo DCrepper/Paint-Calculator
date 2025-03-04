@@ -30,6 +30,8 @@ class CalculateForm extends Component implements HasForms
 
     public ?TilePaintDescription $selectedPaintDescription = null;
 
+    public ?TilePaint $selectedTilePaint = null;
+
     public function mount()
     {
         $this->form->fill();
@@ -59,7 +61,10 @@ class CalculateForm extends Component implements HasForms
                     ->descriptions(fn (Get $get) => $get('selectedPaintCategory') ? PaintCategory::find($get('selectedPaintCategory'))->paints()->get()->pluck('description', 'id') : [])
                     ->visible(fn (Get $get) => $get('selectedPaintCategory'))
                     ->label('Csomag választás')
-                    ->live(),
+                    ->live()
+                    ->afterStateUpdated(function (Get $get, ?string $state) {
+                        $this->selectedTilePaint = TilePaint::find($get('selectedPaint'));
+                    }),
                 TextInput::make('area')
                     ->numeric()
                     ->required()
@@ -75,6 +80,7 @@ class CalculateForm extends Component implements HasForms
                         }
                         $this->selectedPaintDescription = TilePaintDescription::where('tile_paint_id', $get('selectedPaint'))
                             ->where('min', '<=', $state)->where('max', '>=', $state)->first();
+                        $this->selectedTilePaint = TilePaint::find($get('selectedPaint'));
                     }),
                 Select::make('region')->visible(fn (Get $get) => $get('area'))
                     ->label('Régió')
@@ -90,23 +96,30 @@ class CalculateForm extends Component implements HasForms
 
     public function submit(): void
     {
-        $data = $this->form->getState();
-        $data['selectedPaintDescription'] = TilePaintDescription::find($data['selectedPaint']);
-        $data['selectedPaintCategory'] = PaintCategory::find($data['selectedPaintCategory']);
-        $data['TilePaint'] = TilePaint::find($data['selectedPaint']);
-        $data['region'] = Region::find($data['region']);
-        $data['store'] = $data['region']->stores()->find($data['store']);
-        // Generate PDF
-        $pdf = PDF::loadView('pdf.calculation', ['data' => $data]);
-        $pdfPath = storage_path('app/public/calculation.pdf');
-        $pdf->save($pdfPath);
+        try {
+            $data = $this->form->getState();
+            $data['selectedPaintDescription'] = TilePaintDescription::find($data['selectedPaint']);
+            $data['selectedPaintCategory'] = PaintCategory::find($data['selectedPaintCategory']);
+            $data['tilePaint'] = TilePaint::find($data['selectedPaint']);
+            $data['region'] = Region::find($data['region']);
+            $data['store'] = $data['region']->stores()->find($data['store']);
 
-        // Email the data to admin, 2 others and form email to the user
-        Mail::to($data['email'])->send(new CalculationFormSendToUser($data, $pdfPath));
-        // üzlet
-        Mail::to('zoltan@cegem360.hu')->send(new CalculationFormSendToAdmin($data, $pdfPath));
-        // admin
-        Mail::to('tamas@cegem360.hu')->send(new CalculationFormSendToAdmin($data, $pdfPath));
+            // Generate PDF
+            $pdf = PDF::loadView('pdf.calculation', ['data' => $data]);
+            $pdfPath = storage_path('app/public/calculation.pdf');
+            $pdf->save($pdfPath);
+
+            // Email the data to admin, 2 others and form email to the user
+            Mail::to($data['email'])->send(new CalculationFormSendToUser($data, $pdfPath));
+            // üzlet
+            Mail::to('zoltan@cegem360.hu')->send(new CalculationFormSendToAdmin($data, $pdfPath));
+            // admin
+            Mail::to('tamas@cegem360.hu')->send(new CalculationFormSendToAdmin($data, $pdfPath));
+        } catch (\Exception $e) {
+            // Handle the exception (e.g., log the error, show an error message)
+            \Log::error('Error in form submission: ' . $e->getMessage());
+            session()->flash('error', 'There was an error processing your request. Please try again later.');
+        }
 
         redirect()->to('/siker');
     }

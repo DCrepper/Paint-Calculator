@@ -1,7 +1,7 @@
 <div class="container mx-auto">
     <div class="grid grid-cols-1 gap-6 p-6 bg-white rounded-lg shadow-md sm:grid-cols-2">
         <div class="flex justify-start">
-            <form wire:submit="submit" class="space-y-4 w-full">
+            <form wire:submit="submit" class="w-full space-y-4">
                 {{ $this->form }}
 
                 <button type="submit" class="px-4 py-2 text-white bg-blue-500 rounded hover:bg-blue-600">
@@ -11,7 +11,7 @@
         </div>
 
         @isset($selectedPaintDescription)
-            <div class="description p-8 bg-gray-100 rounded-lg">
+            <div class="p-8 bg-gray-100 rounded-lg description">
                 <h2 class="mb-4 font-semibold">
                     {{ $selectedPaintDescription?->min }} - {{ $selectedPaintDescription?->max }} csempe festésére az alább
                     felsorolt anyagokat szükséges megvásárolni
@@ -21,7 +21,10 @@
                     színezés
                 </p>
                 <h2 class="mt-4 mb-2 text-lg font-semibold"><strong>Rétegrend:</strong></h2>
-                <ol class="pl-4 list-decimal list-inside">
+                @isset($selectedTilePaint)
+                    {{ $selectedTilePaint->paint_order }}
+                @endisset
+                {{-- <ol class="pl-4 list-decimal list-inside">
                     <li class="mb-2"><strong>Előkészítés:</strong> Alapos takarítás, zsírtalanítás. Zsírtalanításhoz
                         használható Trisó is,
                         amit a Trisó használati utasítása szerint kell alkalmazni!</li>
@@ -47,7 +50,7 @@
                         idő: kb. 30-40
                         perc, hőmérséklettől függően. Ápolás után sarkok, rések csak neutrális sziloplaszttal kezelhetők.
                     </li>
-                </ol>
+                </ol> --}}
             </div>
         @endisset
 

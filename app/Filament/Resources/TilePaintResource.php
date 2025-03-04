@@ -1,17 +1,17 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\TilePaintResource\Pages;
-use App\Filament\Resources\TilePaintResource\RelationManagers;
 use App\Models\TilePaint;
 use Filament\Forms;
+use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class TilePaintResource extends Resource
 {
@@ -31,7 +31,7 @@ class TilePaintResource extends Resource
                 Forms\Components\TextInput::make('name'),
                 Forms\Components\Textarea::make('description')
                     ->columnSpanFull(),
-                Forms\Components\Textarea::make('paint_order')
+                RichEditor::make('paint_order')
                     ->columnSpanFull(),
             ]);
     }
