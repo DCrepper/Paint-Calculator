@@ -43,9 +43,9 @@ class CalculateForm extends Component implements HasForms
             ->schema([
                 TextInput::make('full_name')
                     ->required()
-                    ->label('Teljes név')
+                    ->label('Kérlek, írd be a neved, minimum a keresztneved')
                     ->live(),
-                TextInput::make('email')
+                TextInput::make('Email címed')
                     ->email()
                     ->required()
                     ->visible(fn (Get $get) => $get('full_name'))
@@ -54,13 +54,13 @@ class CalculateForm extends Component implements HasForms
                 Select::make('selectedPaintCategory')
                     ->options(PaintCategory::all()->pluck('name', 'id'))
                     ->visible(fn (Get $get) => $get('full_name') && $get('email'))
-                    ->label('Festés kategóriája')
+                    ->label('Válaszd ki, hogy milyen munkát szeretnél elvégezni')
                     ->live(),
                 Radio::make('selectedPaint')
                     ->options(fn (Get $get) => $get('selectedPaintCategory') ? PaintCategory::find($get('selectedPaintCategory'))->paints()->get()->pluck('name', 'id') : [])
                     ->descriptions(fn (Get $get) => $get('selectedPaintCategory') ? PaintCategory::find($get('selectedPaintCategory'))->paints()->get()->pluck('description', 'id') : [])
                     ->visible(fn (Get $get) => $get('selectedPaintCategory'))
-                    ->label('Csomag választás')
+                    ->label('Válaszd ki, a számodra megfelelő csomagot')
                     ->live()
                     ->afterStateUpdated(function (Get $get, ?string $state) {
                         $this->selectedTilePaint = TilePaint::find($get('selectedPaint'));
@@ -68,7 +68,7 @@ class CalculateForm extends Component implements HasForms
                 TextInput::make('area')
                     ->numeric()
                     ->required()
-                    ->label('Festés felületének mérete (m2)')
+                    ->label('Írd be a festés felületének területét (m2)')
                     ->visible(fn (Get $get) => $get('selectedPaint'))
                     ->live()
                     ->afterStateUpdated(function (Get $get, ?string $state) {
@@ -83,12 +83,12 @@ class CalculateForm extends Component implements HasForms
                         $this->selectedTilePaint = TilePaint::find($get('selectedPaint'));
                     }),
                 Select::make('region')->visible(fn (Get $get) => $get('area'))
-                    ->label('Régió')
+                    ->label('Válaszd ki a települést, ahol vásárolni szeretnél')
                     ->options(Region::all()->pluck('name', 'id'))
                     ->live(),
                 Select::make('store')->visible(fn (Get $get) => $get('region'))
                     ->options(fn (Get $get) => $get('region') ? Region::find($get('region'))->stores()->get()->pluck('name', 'id') : [])
-                    ->label('Üzlet')
+                    ->label('Válaszd ki a festékboltot')
                     ->live(),
             ])
             ->statePath('data');
