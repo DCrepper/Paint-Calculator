@@ -29,7 +29,7 @@ class TilePaintResource extends Resource
                 Forms\Components\TextInput::make('type')
                     ->required(),
                 Forms\Components\TextInput::make('name'),
-                Forms\Components\Textarea::make('description')
+                RichEditor::make('description')
                     ->columnSpanFull(),
                 RichEditor::make('paint_order')
                     ->columnSpanFull(),

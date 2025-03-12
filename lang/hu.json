@@ -9,6 +9,7 @@
     "The value is not a valid date.": "Az érték nem egy érvényes dátum.",
     "The value must be a number.": "Az értéknek számnak kell lennie.",
     "The value must be a valid number.": "Az értéknek érvényes számnak kell lennie.",
-    "The value must be greater than %s.": "Az értéknek nagyobbnak kell lennie, mint %s."
-
+    "The value must be greater than %s.": "Az értéknek nagyobbnak kell lennie, mint %s.",
+    "The full name field is required": "A teljes név mező kötelező.",
+    "The email field is required": "Az e-mail mező kötelező."
 }

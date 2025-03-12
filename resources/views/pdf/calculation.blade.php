@@ -59,6 +59,10 @@
             .page-break {
                 page-break-after: always;
             }
+
+            .hidden {
+                display: none;
+            }
         </style>
         @vite('resources/css/app.css')
     </head>
@@ -66,7 +70,7 @@
     <body>
         <div class="container">
             <div class="header">
-                <img src="https://harzo.hu/wp-content/uploads/2022/10/HARZO_uj_logo-1024x835.png" alt="Harzó Kft. logo"
+                <img src="https://harzo.hu/wp-content/uploads/2022/10/HARZO_uj_logo-1024x835.png" alt="Harzo Kft. logo"
                     style="width: 100px; height: 100px;">
                 <h1>Árajánlat Részletek</h1>
             </div>
@@ -77,9 +81,16 @@
                 <p><strong>Kiválasztott Festékkategória:</strong> {{ $data['selectedPaintCategory']->name }}</p>
                 <p><strong>Kiválasztott Festék:</strong> {{ $data['tilePaint']->name }}</p>
                 <p><strong>Megadot terület:</strong> {{ $data['area'] }} m²</p>
-                <p><strong>Régió:</strong> {{ $data['region']->name }}</p>
-                <p><strong>Üzlet:</strong> {{ $data['store']->name }} {{ $data['store']->address }}</p>
+                <div class="{{ isset($data['region']) ? '' : 'hidden' }}">
+                    <p class="mb-2"><strong>Település, ahol vásárolni szeretnél:</strong>
+                        {{ isset($data['region']) ? $data['region']?->name : '' }}
+                    </p>
+                    <p class="mb-2"><strong>Festékbolt, ahol a vásárlást tervezed:</strong>
+                        {{ isset($data['region']) ? $data['store']?->name . ' ' . $data['store']->address : '' }}
+                    </p>
+                </div>
             </div>
+            <div class="page-break"></div>
             <div class="">
                 <div class="p-8 bg-gray-100 rounded-lg description">
                     <h2 class="mb-4 font-semibold">
@@ -87,7 +98,7 @@
                         {{ $data['selectedPaintDescription']?->max }} m2
                         csempe festésére az alább felsorolt anyagokat szükséges megvásárolni
                     </h2>
-                    <p class="mb-2 details">{{ $data['selectedPaintDescription']?->description }}</p>
+                    <p class="mb-2 details">{!! $data['selectedPaintDescription']?->description !!}</p>
                     <p class="mb-2 details"><strong>Várható végösszeg:</strong> bruttó
                         {{ $data['selectedPaintDescription']?->price }}Ft +
                         színezés
@@ -95,18 +106,20 @@
                     <div class="page-break"></div>
                     <h2 class="mt-4 mb-2 text-lg font-semibold"><strong>Rétegrend:</strong></h2>
                     @isset($data['tilePaint'])
-                        {{ $data['tilePaint']?->paint_order }}
+                        {!! $data['tilePaint']?->paint_order !!}
                     @endisset
 
                 </div>
                 <div class="thank-you p-8 bg-gray-100 rounded-lg mt-8 text-center">
                     <h2 class="text-xl font-semibold mb-4">Köszönjük az árajánlat kérését!</h2>
-                    <p class="mb-2">Hamarosan felvesszük Önnel a kapcsolatot a részletek egyeztetése érdekében.</p>
+                    <p class="mb-2">
+                        További lépések miatt vegye fel a kapcsolatot az üzlettel
+                    </p>
                     <p class="mb-2">Amennyiben bármilyen kérdése van, kérjük, lépjen kapcsolatba velünk az alábbi
                         elérhetőségek egyikén:</p>
                     <ul class="list-none list-inside mb-4" style="list-style-type: none;">
                         <li class="mb-2" style="padding: 2px;margin: 5px;">Email: info@harzo.hu</li>
-                        <li class="mb-2" style="padding: 2px;margin: 5px;">Telefon: +36 1 234 5678</li>
+                        <li class="mb-2" style="padding: 2px;margin: 5px;">Telefon: +36 70 6237610</li>
                     </ul>
                     <p>Köszönjük, hogy minket választott!</p>
                 </div>

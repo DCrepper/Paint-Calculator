@@ -17,7 +17,7 @@ Route::get('/', function () {
 
 Route::get('/siker', function () {
     return view('siker');
-});
+})->name('siker');
 
 Route::get('/mailable', function () {
     $data = [

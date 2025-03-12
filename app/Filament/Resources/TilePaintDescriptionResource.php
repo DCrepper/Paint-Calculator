@@ -7,6 +7,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\TilePaintDescriptionResource\Pages;
 use App\Models\TilePaintDescription;
 use Filament\Forms;
+use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -25,7 +26,7 @@ class TilePaintDescriptionResource extends Resource
                 Forms\Components\Select::make('tile_paint_id')
                     ->relationship('tilePaint', 'name')
                     ->required(),
-                Forms\Components\Textarea::make('description')
+                RichEditor::make('description')
                     ->required()
                     ->columnSpanFull(),
                 Forms\Components\TextInput::make('min')
