@@ -169,6 +169,8 @@ class CalculateForm extends Component implements HasForms
 
         // Email the data to admin, 2 others and form email to the user
         Mail::to($data['email'])->send(new CalculationFormSendToUser($data, $pdfPath));
+
+        redirect()->to('/siker');
     }
 
     public function render(): View
