@@ -6,13 +6,13 @@
             </form>
 
             <div class="flex space-x-4">
-                @if ($this->data['email'] !== null && $this->data['full_name'] !== null)
+                @if ($this->data['area'] !== null)
                     <button type="button" class="px-4 py-2 text-white bg-gold-500 rounded hover:bg-gold-600"
                         wire:click="sendOnlyToSelf">{{ __('Elküldöm csak magamnak') }}
                     </button>
                 @endif
-                @if ($this->data['region'] !== null)
-                    <button type="submit"
+                @if ($this->data['region'] !== null && $this->data['area'] !== null)
+                    <button type="submit" wire:click="submit"
                         class="px-4 py-2 text-white bg-rose-500 rounded hover:bg-rose-600">{{ __('filament-actions::modal.actions.submit.label') }}
                         az üzletnek
                     </button>
