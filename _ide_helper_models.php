@@ -37,6 +37,18 @@ namespace App\Models{
 /**
  * 
  *
+ * @property-read \App\Models\Region|null $region
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|PartnerShop newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|PartnerShop newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|PartnerShop query()
+ */
+	class PartnerShop extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
  * @property int $id
  * @property string $name
  * @property \Illuminate\Support\Carbon|null $created_at
@@ -93,6 +105,7 @@ namespace App\Models{
  * @property string $type
  * @property string|null $name
  * @property string|null $description
+ * @property string|null $paint_order
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\TilePaintDescription> $descriptions
@@ -107,6 +120,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|TilePaint whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|TilePaint whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|TilePaint wherePaintCategoryId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|TilePaint wherePaintOrder($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|TilePaint whereType($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|TilePaint whereUpdatedAt($value)
  */
