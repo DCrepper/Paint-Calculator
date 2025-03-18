@@ -21,7 +21,7 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => [env('FRONTEND_URL', 'http://localhost:3000'), 'https://harzo.hu/'],
+    'allowed_origins' => [env('FRONTEND_URL', 'http://localhost:3000'), 'https://harzo.hu'],
 
     'allowed_origins_patterns' => [],
 
