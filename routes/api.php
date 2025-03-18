@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use App\Http\Controllers\CsempeCalculatorController;
 use App\Models\PartnerShop;
+use App\Models\Region;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,3 +21,11 @@ Route::get('/partner-shops', function () {
 
     return response()->json($partnerShops);
 })->name('partner-shops');
+
+Route::get('regions', function () {
+    return response()->json(Region::with('stores')->get());
+})->name('regions');
+
+Route::get('/regions/{region}/stores', function (Region $region) {
+    return response()->json($region->stores()->get());
+})->name('regions.stores');
