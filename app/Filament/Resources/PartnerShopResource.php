@@ -7,11 +7,11 @@ namespace App\Filament\Resources;
 use App\Filament\Imports\PartnerShopImporter;
 use App\Filament\Resources\PartnerShopResource\Pages;
 use App\Models\PartnerShop;
-use Filament\Actions\ImportAction;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Actions\ImportAction;
 use Filament\Tables\Table;
 
 class PartnerShopResource extends Resource
