@@ -18,4 +18,9 @@ class Region extends Model
     {
         return $this->hasMany(Store::class);
     }
+
+    public function partnerShops(): HasMany
+    {
+        return $this->hasMany(PartnerShop::class);
+    }
 }

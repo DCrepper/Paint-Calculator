@@ -37,10 +37,28 @@ namespace App\Models{
 /**
  * 
  *
+ * @property int $id
+ * @property int|null $region_id
+ * @property string $company_name
+ * @property string $name
+ * @property string $address
+ * @property string $phone
+ * @property string $email
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \App\Models\Region|null $region
  * @method static \Illuminate\Database\Eloquent\Builder<static>|PartnerShop newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|PartnerShop newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|PartnerShop query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|PartnerShop whereAddress($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|PartnerShop whereCompanyName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|PartnerShop whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|PartnerShop whereEmail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|PartnerShop whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|PartnerShop whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|PartnerShop wherePhone($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|PartnerShop whereRegionId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|PartnerShop whereUpdatedAt($value)
  */
 	class PartnerShop extends \Eloquent {}
 }
@@ -53,6 +71,8 @@ namespace App\Models{
  * @property string $name
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\PartnerShop> $partnerShops
+ * @property-read int|null $partner_shops_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Store> $stores
  * @property-read int|null $stores_count
  * @method static \Database\Factories\RegionFactory factory($count = null, $state = [])
