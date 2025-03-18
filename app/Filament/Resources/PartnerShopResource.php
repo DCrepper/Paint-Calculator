@@ -73,7 +73,7 @@ class PartnerShopResource extends Resource
             ->actions([
                 Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
-                ImportAction::make('import')->importer(PartnerShopImporter::class),
+                ImportAction::make()->importer(PartnerShopImporter::class),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

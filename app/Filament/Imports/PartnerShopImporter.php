@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Filament\Imports;
 
 use App\Models\PartnerShop;
@@ -16,7 +18,7 @@ class PartnerShopImporter extends Importer
         return [
             ImportColumn::make('region_id')
                 ->numeric()
-                ->rules(['integer']),
+                ->relationship('region', 'name'),
             ImportColumn::make('company_name')
                 ->requiredMapping()
                 ->rules(['required']),
@@ -42,7 +44,7 @@ class PartnerShopImporter extends Importer
         //     'email' => $this->data['email'],
         // ]);
 
-        return new PartnerShop();
+        return new PartnerShop;
     }
 
     public static function getCompletedNotificationBody(Import $import): string
