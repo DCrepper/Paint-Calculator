@@ -42,6 +42,10 @@ class PartnerShopImporter extends Importer
 
     public function resolveRecord(): ?PartnerShop
     {
+        if ($this->data['email'] === null) {
+            return null;
+        }
+
         return PartnerShop::firstOrCreate([
             'email' => $this->data['email'],
             'company_name' => $this->data['company_name'],
