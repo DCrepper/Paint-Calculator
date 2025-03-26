@@ -46,7 +46,6 @@ class PartnerShopResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('region.name')
-                    ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('company_name')
                     ->searchable(),
