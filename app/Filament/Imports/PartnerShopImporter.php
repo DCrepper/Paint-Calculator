@@ -20,7 +20,7 @@ class PartnerShopImporter extends Importer
             ImportColumn::make('region_id')
                 ->numeric()
                 ->relationship('region', function (string $state): ?Region {
-                    return Region::whereName($state)->firstOrCreate(['name' => $state]);
+                    return Region::firstOrCreate(['name' => $state]);
                 }),
             ImportColumn::make('company_name')
                 ->requiredMapping()
@@ -42,12 +42,11 @@ class PartnerShopImporter extends Importer
 
     public function resolveRecord(): ?PartnerShop
     {
-        // return PartnerShop::firstOrNew([
-        //     // Update existing records, matching them by `$this->data['column_name']`
-        //     'email' => $this->data['email'],
-        // ]);
+        return PartnerShop::firstOrCreate([
+            'email' => $this->data['email'],
+        ]);
 
-        return new PartnerShop;
+        // return new PartnerShop;
     }
 
     public static function getCompletedNotificationBody(Import $import): string
