@@ -18,7 +18,6 @@ class PartnerShopImporter extends Importer
     {
         return [
             ImportColumn::make('region_id')
-                ->numeric()
                 ->relationship('region', function (string $state): ?Region {
                     return Region::firstOrCreate(['name' => $state]);
                 }),
