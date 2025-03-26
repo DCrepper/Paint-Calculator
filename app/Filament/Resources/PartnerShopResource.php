@@ -45,9 +45,7 @@ class PartnerShopResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('region_id')
-                    ->relationship('region', 'name')
-                    ->preload()
+                Tables\Columns\TextColumn::make('region.name')
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('company_name')
