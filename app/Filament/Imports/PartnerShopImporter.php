@@ -49,7 +49,7 @@ class PartnerShopImporter extends Importer
             'company_name' => $this->data['company_name'],
             'name' => $this->data['name'] ?? $this->data['company_name'],
             'address' => $this->data['address'],
-            'phone' => $this->data['phone'],
+            'phone' => $this->data['phone'] ?? '',
             'region_id' => Region::firstOrCreate(['name' => $this->data['region_id']])->id,
         ]);
 
