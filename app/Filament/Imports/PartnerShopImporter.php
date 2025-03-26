@@ -44,6 +44,10 @@ class PartnerShopImporter extends Importer
     {
         return PartnerShop::firstOrCreate([
             'email' => $this->data['email'],
+            'company_name' => $this->data['company_name'],
+            'address' => $this->data['address'],
+            'phone' => $this->data['phone'],
+            'region_id' => Region::firstOrCreate(['name' => $this->data['region_id']])->id,
         ]);
 
         // return new PartnerShop;
