@@ -20,7 +20,7 @@ class PartnerShopImporter extends Importer
             ImportColumn::make('region_id')
                 ->numeric()
                 ->relationship('region', function (string $state): ?Region {
-                    return Region::whereName($state)->firstOrNew(['name' => $state]);
+                    return Region::whereName($state)->firstOrCreate(['name' => $state]);
                 }),
             ImportColumn::make('company_name')
                 ->requiredMapping()
