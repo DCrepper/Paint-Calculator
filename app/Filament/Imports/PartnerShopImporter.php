@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Filament\Imports;
 
 use App\Models\PartnerShop;
+use App\Models\Region;
 use Filament\Actions\Imports\ImportColumn;
 use Filament\Actions\Imports\Importer;
 use Filament\Actions\Imports\Models\Import;
@@ -18,7 +19,9 @@ class PartnerShopImporter extends Importer
         return [
             ImportColumn::make('region_id')
                 ->numeric()
-                ->relationship('region', 'name'),
+                ->relationship('region', function (string $state): ?Region {
+                    return Region::whereName($state)->firstOrNew(['name' => $state]);
+                }),
             ImportColumn::make('company_name')
                 ->requiredMapping()
                 ->rules(['required']),
