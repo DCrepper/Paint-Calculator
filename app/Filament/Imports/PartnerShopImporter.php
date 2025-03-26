@@ -43,6 +43,7 @@ class PartnerShopImporter extends Importer
         if ($this->data['email'] === null) {
             return null;
         }
+        $region = Region::firstOrCreate(['name' => $this->data['region_id']]);
 
         return PartnerShop::firstOrCreate([
             'email' => $this->data['email'],
@@ -50,7 +51,7 @@ class PartnerShopImporter extends Importer
             'name' => $this->data['name'] ?? $this->data['company_name'],
             'address' => $this->data['address'],
             'phone' => $this->data['phone'] ?? '',
-            'region_id' => Region::firstOrCreate(['name' => $this->data['region_id']])->id,
+            'region_id' => $region->id,
         ]);
 
         // return new PartnerShop;
