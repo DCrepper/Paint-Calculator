@@ -29,11 +29,9 @@ class PartnerShopImporter extends Importer
                 ->requiredMapping()
                 ->rules(['required']),
             ImportColumn::make('address')
-                ->requiredMapping()
-                ->rules(['required']),
+                ->requiredMapping(),
             ImportColumn::make('phone')
-                ->requiredMapping()
-                ->rules(['required']),
+                ->requiredMapping(),
             ImportColumn::make('email')
                 ->requiredMapping()
                 ->rules(['required', 'email']),
@@ -49,7 +47,7 @@ class PartnerShopImporter extends Importer
         return PartnerShop::firstOrCreate([
             'email' => $this->data['email'],
             'company_name' => $this->data['company_name'],
-            'name' => $this->data['name'],
+            'name' => $this->data['name'] ?? $this->data['company_name'],
             'address' => $this->data['address'],
             'phone' => $this->data['phone'],
             'region_id' => Region::firstOrCreate(['name' => $this->data['region_id']])->id,
