@@ -23,7 +23,7 @@ Route::get('/partner-shops', function () {
 })->name('partner-shops');
 
 Route::get('regions', function () {
-    return response()->json(Region::with('stores')->get());
+    return response()->json(Region::with('stores')->orderBy('name')->get());
 })->name('regions');
 
 Route::get('/regions/{region}/stores', function (Region $region) {
