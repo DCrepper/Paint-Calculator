@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Livewire\ListPartnerShops;
 use App\Mail\CalculationFormSendToAdmin;
 use App\Models\PaintCategory;
 use App\Models\Region;
@@ -68,3 +69,5 @@ Route::get('/pdf', function () {
         pdfPath: 'path/to/pdf'
     ); */
 });
+
+Route::get('partnerlista', ListPartnerShops::class)->name('partnerlista');

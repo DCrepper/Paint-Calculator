@@ -1,7 +1,12 @@
 {
   "resources/css/app.css": {
-    "file": "assets/app-kqsHt_J3.css",
+    "file": "assets/app-Y2ERDc1m.css",
     "src": "resources/css/app.css",
+    "isEntry": true
+  },
+  "resources/css/form.css": {
+    "file": "assets/form-BaG8HFWb.css",
+    "src": "resources/css/form.css",
     "isEntry": true
   },
   "resources/css/theme.css": {

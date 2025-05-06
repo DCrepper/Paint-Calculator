@@ -25,6 +25,9 @@ Route::get('/partner-shops', function () {
 Route::get('regions', function () {
     return response()->json(Region::with('stores')->orderBy('name')->get());
 })->name('regions');
+Route::get('regions-has-stores', function () {
+    return response()->json(Region::has('partnerShops')->orderBy('name')->get());
+})->name('regions-has-stores');
 
 Route::get('/regions/{region}/stores', function (Region $region) {
     return response()->json($region->partnerShops()->get());

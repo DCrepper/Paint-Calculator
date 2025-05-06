@@ -1,4 +1,5 @@
 <x-layouts.app>
+    @vite(['resources/css/form.css'])
     <x-slot name="title">Harzo festék kalkulátor</x-slot>
     <p class="text-center w-4/5 mx-auto">
         <span class="inline-block text-left">
