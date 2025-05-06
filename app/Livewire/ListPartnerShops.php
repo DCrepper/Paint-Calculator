@@ -6,6 +6,7 @@ namespace App\Livewire;
 
 use App\Filament\Imports\PartnerShopImporter;
 use App\Models\PartnerShop;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Tables\Actions\EditAction;
@@ -53,19 +54,19 @@ class ListPartnerShops extends Component implements HasForms, HasTable
             ])
             ->actions([
                 EditAction::make()->form([
-                    TextColumn::make('region.name')
+                    TextInput::make('region.name')
                         ->label('Region')
                         ->required(),
-                    TextColumn::make('company_name')
+                    TextInput::make('company_name')
                         ->label('Company Name')
                         ->required(),
-                    TextColumn::make('name')
+                    TextInput::make('name')
                         ->label('Name'),
-                    TextColumn::make('address')
+                    TextInput::make('address')
                         ->label('Address'),
-                    TextColumn::make('phone')
+                    TextInput::make('phone')
                         ->label('Phone'),
-                    TextColumn::make('email')
+                    TextInput::make('email')
                         ->label('Email')
                         ->email(),
                 ])->action(function (PartnerShop $record) {
